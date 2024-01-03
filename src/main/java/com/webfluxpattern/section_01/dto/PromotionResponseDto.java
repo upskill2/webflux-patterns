@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor (staticName = "create")
 @NoArgsConstructor
-@Builder
 public class PromotionResponseDto {
 
     private int id;

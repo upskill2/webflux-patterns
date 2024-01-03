@@ -19,11 +19,16 @@ public class PromotionClient {
     }
 
     public Mono<PromotionResponseDto> getPromotion (int id) {
-    return  webClient
+        return webClient
                 .get ()
                 .uri ("/{id}", id)
                 .retrieve ()
-                .bodyToMono (PromotionResponseDto.class);
+                .bodyToMono (PromotionResponseDto.class)
+                .onErrorReturn (this.fallback (id));
+    }
+
+    private PromotionResponseDto fallback (int id) {
+        return PromotionResponseDto.create (id, "No promotion available", 0, null);
     }
 
 }

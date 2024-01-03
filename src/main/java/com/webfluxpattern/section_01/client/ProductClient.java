@@ -24,7 +24,8 @@ public class ProductClient {
                 .get ()
                 .uri ("/{id}", id)
                 .retrieve ()
-                .bodyToMono (ProductResponseDto.class);
+                .bodyToMono (ProductResponseDto.class)
+               .onErrorResume (error -> Mono.empty ());
     }
 
 
