@@ -11,6 +11,6 @@ import java.util.UUID;
 @AllArgsConstructor (staticName = "create")
 public class PaymentRequest {
     private int userId;
-    private int amount;
+    private double amount;
     private UUID orderId;
 }

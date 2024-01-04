@@ -38,6 +38,7 @@ public class ShippingClient {
                 .bodyValue (shippingRequest)
                 .retrieve ()
                 .bodyToMono (ShippingResponse.class)
+
                 .onErrorReturn (this.responseOnError (shippingRequest));
     }
 
@@ -46,7 +47,7 @@ public class ShippingClient {
                 .orderId (shippingRequest.getOrderId ())
                 .quantity (shippingRequest.getQuantity ())
                 .address (null)
-                .deliveryDate (null)
+                .expectedDelivery (null)
                 .status (Status.FAILED)
                 .build ();
     }

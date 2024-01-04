@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DebugUtil {
     public static void printContext (OrchestrationRequestContext context)  {
         ObjectMapper mapper = new ObjectMapper ();
+        mapper.findAndRegisterModules ();
         final String value;
         try {
             value = mapper.writerWithDefaultPrettyPrinter ().writeValueAsString (context);

@@ -19,6 +19,6 @@ public class ShippingResponse {
     private UUID orderId;
     private int quantity;
     private Status status;
-    private LocalDate deliveryDate;
+    private LocalDate expectedDelivery;
     private ShippingAddress address;
 }

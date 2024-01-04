@@ -1,3 +1,7 @@
+logging:
+  level:
+    ROOT: DEBUG
+
 sec01:
   product.service: "http://localhost:6060/sec01/product"
   review.service: "http://localhost:6060/sec01/review"

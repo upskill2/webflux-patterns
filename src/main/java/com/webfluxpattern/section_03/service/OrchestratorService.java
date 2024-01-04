@@ -44,7 +44,7 @@ public class OrchestratorService {
 
 
         ShippingAddress address = context.getStatus () == Status.SUCCESS ? context.getShippingResponse ().getAddress () : null;
-        LocalDate deliveryDate = context.getStatus () == Status.SUCCESS ? context.getShippingResponse ().getDeliveryDate () : null;
+        LocalDate deliveryDate = context.getStatus () == Status.SUCCESS ? context.getShippingResponse ().getExpectedDelivery () : null;
 
         return OrderResponse.builder ()
                 .userId (context.getOrderRequest ().getUserId ())
@@ -67,7 +67,7 @@ public class OrchestratorService {
         return productClient.getProduct (context.getOrderRequest ().getProductId ())
                 .map (Product::getPrice)
                 .doOnNext (context::setProductPrice)
-                .thenReturn (context);
+                .map (i -> context);
 
     }
 
