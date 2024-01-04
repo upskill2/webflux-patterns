@@ -3,3 +3,7 @@ sec01:
   review.service: "http://localhost:6060/sec01/review"
   promotion.service: "http://localhost:6060/sec01/promotion"
 
+sec02:
+  delta.service: "http://localhost:6060/sec02/delta/"
+  frontier.service: "http://localhost:6060/sec02/frontier"
+  jetblue.service: "http://localhost:6060/sec02/jetblue"
