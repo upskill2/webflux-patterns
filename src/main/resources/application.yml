@@ -7,3 +7,9 @@ sec02:
   delta.service: "http://localhost:6060/sec02/delta/"
   frontier.service: "http://localhost:6060/sec02/frontier"
   jetblue.service: "http://localhost:6060/sec02/jetblue"
+
+sec03:
+  product.service: "http://localhost:6060/sec03/product"
+  user.service: "http://localhost:6060/sec03/user"
+  shipping.service: "http://localhost:6060/sec03/shipping"
+  inventory.service: "http://localhost:6060/sec03/inventory"
