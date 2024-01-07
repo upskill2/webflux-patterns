@@ -1,9 +1,9 @@
 package com.webfluxpattern.section_04.util;
 
-import com.webfluxpattern.section_03.dto.OrchestrationRequestContext;
-import com.webfluxpattern.section_03.dto.request.InventoryRequest;
-import com.webfluxpattern.section_03.dto.request.PaymentRequest;
-import com.webfluxpattern.section_03.dto.request.ShippingRequest;
+import com.webfluxpattern.section_04.dto.OrchestrationRequestContext;
+import com.webfluxpattern.section_04.dto.request.InventoryRequest;
+import com.webfluxpattern.section_04.dto.request.PaymentRequest;
+import com.webfluxpattern.section_04.dto.request.ShippingRequest;
 
 public class OrchestrationUtil {
 
