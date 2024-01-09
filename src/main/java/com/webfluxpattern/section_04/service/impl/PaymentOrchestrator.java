@@ -3,11 +3,13 @@ package com.webfluxpattern.section_04.service.impl;
 import com.webfluxpattern.section_04.client.UserClient;
 import com.webfluxpattern.section_04.dto.OrchestrationRequestContext;
 import com.webfluxpattern.section_04.dto.Status;
+import com.webfluxpattern.section_04.dto.response.PaymentResponse;
 import com.webfluxpattern.section_04.service.Orchestrator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -19,15 +21,17 @@ public class PaymentOrchestrator extends Orchestrator {
 
     @Override
     public Mono<OrchestrationRequestContext> create (final OrchestrationRequestContext context) {
-        return userClient.deduct (context.getPaymentRequest ())
+        final Mono<PaymentResponse> deduct = userClient.deduct (context.getPaymentRequest ());
+        return deduct
                 .doOnNext (context::setPaymentResponse)
-                .thenReturn (context);
+                .thenReturn (context)
+                .handle (statusHandler ());
 
     }
 
     @Override
     public Predicate<OrchestrationRequestContext> isSuccess () {
-        return context -> context.getPaymentResponse ().getStatus () == Status.SUCCESS;
+        return context -> Objects.nonNull (context.getPaymentResponse ()) && context.getPaymentResponse ().getStatus () == Status.SUCCESS;
     }
 
     @Override

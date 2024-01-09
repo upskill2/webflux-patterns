@@ -12,6 +12,6 @@ import java.util.UUID;
 public class ShippingRequest {
 
     private int quantity;
-    private UUID orderId;
+    private UUID inventoryId;
     private int userId;
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import static com.webfluxpattern.section_03.client.UserClient.DEDUCT;
+import static com.webfluxpattern.section_04.client.UserClient.DEDUCT;
 
 @Service
 public class InventoryClient {
@@ -44,6 +44,7 @@ public class InventoryClient {
 
     private InventoryResponse responseOnError (InventoryRequest inventoryRequest) {
         return InventoryResponse.builder ()
+                .inventoryId (null)
                 .productId (inventoryRequest.getProductId ())
                 .quantity (inventoryRequest.getQuantity ())
                 .remainingQuantity (0)

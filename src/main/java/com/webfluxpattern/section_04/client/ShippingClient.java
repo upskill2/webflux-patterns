@@ -44,7 +44,7 @@ public class ShippingClient {
 
     private ShippingResponse responseOnError (ShippingRequest shippingRequest) {
         return ShippingResponse.builder ()
-                .orderId (shippingRequest.getOrderId ())
+                .shippingId (null)
                 .quantity (shippingRequest.getQuantity ())
                 .address (null)
                 .expectedDelivery (null)

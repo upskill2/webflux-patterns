@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor (staticName = "create")
 public class InventoryRequest {
 
-    private UUID orderId;
+    private UUID paymentId;
     private int productId;
     private int quantity;
 }

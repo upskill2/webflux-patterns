@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 public class UserClient {
 
@@ -42,6 +44,7 @@ public class UserClient {
 
     private PaymentResponse responseOnError (PaymentRequest paymentRequest) {
         return PaymentResponse.builder ()
+                .paymentId (null)
                 .userId (paymentRequest.getUserId ())
                 .name (null)
                 .balance (paymentRequest.getAmount ())

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -21,12 +22,13 @@ public class ShippingOrchestrator extends Orchestrator {
     public Mono<OrchestrationRequestContext> create (final OrchestrationRequestContext context) {
         return shippingClient.schedule (context.getShippingRequest ())
                 .doOnNext (context::setShippingResponse)
-                .thenReturn (context);
+                .thenReturn (context)
+                .handle (statusHandler ());
     }
 
     @Override
     public Predicate<OrchestrationRequestContext> isSuccess () {
-        return context -> context.getShippingResponse ().getStatus () == Status.SUCCESS;
+        return context -> Objects.nonNull (context.getShippingResponse ()) && context.getShippingResponse ().getStatus () == Status.SUCCESS;
     }
 
     @Override

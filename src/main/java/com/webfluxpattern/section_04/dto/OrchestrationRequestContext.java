@@ -27,7 +27,7 @@ public class OrchestrationRequestContext {
     }
 
     private OrderRequest orderRequest;
-    private double productPrice;
+    private int productPrice;
     private PaymentRequest paymentRequest;
     private PaymentResponse paymentResponse;
     private InventoryRequest inventoryRequest;

@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder
 public class ShippingResponse {
 
-    private UUID orderId;
+    private UUID shippingId;
     private int quantity;
     private Status status;
     private LocalDate expectedDelivery;

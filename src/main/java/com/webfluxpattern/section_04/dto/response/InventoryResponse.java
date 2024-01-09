@@ -6,12 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor (staticName = "create")
 @Builder
 public class InventoryResponse {
 
+    private UUID inventoryId;
     private int productId;
     private int quantity;
     private int remainingQuantity;

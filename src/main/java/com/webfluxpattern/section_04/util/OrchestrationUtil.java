@@ -7,32 +7,28 @@ import com.webfluxpattern.section_04.dto.request.ShippingRequest;
 
 public class OrchestrationUtil {
 
-    public static void buildRequestContext (OrchestrationRequestContext context) {
-        buildInventoryRequest (context);
-        buildShippingRequest (context);
-        buildPaymentRequest (context);
-    }
-
-    private static void buildPaymentRequest (OrchestrationRequestContext context) {
+    public static void buildPaymentRequest (OrchestrationRequestContext context) {
         PaymentRequest paymentRequest = PaymentRequest
-                .create (context.getOrderRequest ().getUserId (),
-                        (int) (context.getProductPrice () * context.getOrderRequest ().getQuantity ()),
-                        context.getOrderId ());
+                .create (
+                        context.getOrderRequest ().getQuantity ()* context.getProductPrice (),
+                        context.getOrderId (),
+                        context.getOrderRequest ().getUserId ()
+                );
         context.setPaymentRequest (paymentRequest);
     }
 
-    private static void buildInventoryRequest (OrchestrationRequestContext context) {
+    public static void buildInventoryRequest (OrchestrationRequestContext context) {
         InventoryRequest inventoryRequest = InventoryRequest
-                .create (context.getOrderId (),
+                .create (context.getPaymentResponse ().getPaymentId (),
                         context.getOrderRequest ().getProductId (),
                         context.getOrderRequest ().getQuantity ());
         context.setInventoryRequest (inventoryRequest);
     }
 
-    private static void buildShippingRequest (OrchestrationRequestContext context) {
+    public static void buildShippingRequest (OrchestrationRequestContext context) {
         ShippingRequest shippingRequest = ShippingRequest
                 .create (context.getOrderRequest ().getQuantity (),
-                        context.getOrderId (),
+                        context.getInventoryResponse ().getInventoryId (),
                         context.getOrderRequest ().getUserId ());
         context.setShippingRequest (shippingRequest);
     }
