@@ -2,18 +2,25 @@ logging:
   level:
     ROOT: DEBUG
 
-resilience4j.circuitbreaker:
-  instances:
-     review-service:
-       slidingWindowType: COUNT_BASED
-       slidingWindowSize: 4
-       minimumNumberOfCalls: 3
-       failureRateThreshold: 50
-       waitDurationInOpenState: 10s
-       permittedNumberOfCallsInHalfOpenState: 2
-       recordExceptions:
-         - org.springframework.web.reactive.function.client.WebClientResponseException
-         - java.util.concurrent.TimeoutException
+resilience4j:
+  ratelimiter:
+    instances:
+      calculator-service:
+        limitRefreshPeriod: 20s
+        limitForPeriod: 5
+        timeoutDuration: 5s
+  circuitbreaker:
+    instances:
+      review-service:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 4
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 2
+        recordExceptions:
+          - org.springframework.web.reactive.function.client.WebClientResponseException
+          - java.util.concurrent.TimeoutException
 
 sec01:
   product.service: "http://localhost:6060/sec01/product"
@@ -52,3 +59,7 @@ sec07:
 sec08:
   product.service: "http://localhost:6060/sec08/product"
   review.service: "http://localhost:6060/sec08/review"
+
+sec09:
+  product.service: "http://localhost:6060/sec09/product"
+  review.service: "http://localhost:6060/sec09/review"

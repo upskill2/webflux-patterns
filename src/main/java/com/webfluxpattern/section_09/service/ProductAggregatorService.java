@@ -1,11 +1,11 @@
-package com.webfluxpattern.section_07.service;
+package com.webfluxpattern.section_09.service;
 
 
-import com.webfluxpattern.section_07.client.ReviewClient;
-import com.webfluxpattern.section_07.dto.ProductAggregatedDto;
-import com.webfluxpattern.section_07.dto.ProductResponseDto;
-import com.webfluxpattern.section_07.client.ProductClient;
-import com.webfluxpattern.section_07.dto.ReviewResponseDto;
+import com.webfluxpattern.section_09.client.ProductClient;
+import com.webfluxpattern.section_09.client.ReviewClient;
+import com.webfluxpattern.section_09.dto.ProductAggregatedDto;
+import com.webfluxpattern.section_09.dto.ProductResponseDto;
+import com.webfluxpattern.section_09.dto.ReviewResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
