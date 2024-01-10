@@ -1,6 +1,7 @@
 package com.webfluxpattern.section_09.client;
 
 import com.webfluxpattern.section_09.dto.ReviewResponseDto;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class ReviewClient {
                 .build ();
     }
 
+    @RateLimiter (name = "review-service", fallbackMethod = "getReviewFallback")
     public Mono<List<ReviewResponseDto>> getReview (int id) {
         return webClient
                 .get ()
@@ -31,10 +33,12 @@ public class ReviewClient {
                 .onStatus (HttpStatus::is4xxClientError,
                         clientResponse -> Mono.empty ())
                 .bodyToFlux (ReviewResponseDto.class)
-                .collectList ()
-                .retryWhen (Retry.fixedDelay (3, Duration.ofMillis (1000)))
-                .timeout (Duration.ofMillis (500))
-                .onErrorReturn (Collections.emptyList ());
+                .collectList ();
+    }
+
+    public Mono<List<ReviewResponseDto>> getReviewFallback (int id, Exception e) {
+        ReviewResponseDto reviewResponseDto = new ReviewResponseDto ("1", "1", 1, 1);
+        return Mono.just (Collections.singletonList (reviewResponseDto));
     }
 
 }

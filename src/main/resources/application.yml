@@ -5,6 +5,10 @@ logging:
 resilience4j:
   ratelimiter:
     instances:
+      review-service:
+        limitRefreshPeriod: 10s
+        limitForPeriod: 4
+        timeoutDuration: 5s
       calculator-service:
         limitRefreshPeriod: 20s
         limitForPeriod: 5
