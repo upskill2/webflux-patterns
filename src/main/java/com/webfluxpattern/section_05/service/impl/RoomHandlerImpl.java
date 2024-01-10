@@ -33,16 +33,16 @@ public class RoomHandlerImpl extends ReservationHandler {
         return RoomReservationRequest.builder ()
                 .city (reservationItemRequest.getCity ())
                 .category (reservationItemRequest.getCategory ())
-                .checkin (reservationItemRequest.getFrom ())
-                .checkout (reservationItemRequest.getTo ())
+                .checkIn (reservationItemRequest.getFrom ())
+                .checkOut (reservationItemRequest.getTo ())
                 .build ();
     }
     private ReservationItemResponse toReservationItemResponse (RoomReservationResponse roomReservationResponse) {
         return ReservationItemResponse.builder ()
                 .city (roomReservationResponse.getCity ())
                 .category (roomReservationResponse.getCategory ())
-                .from (roomReservationResponse.getCheckin ())
-                .to (roomReservationResponse.getCheckout ())
+                .from (roomReservationResponse.getCheckIn ())
+                .to (roomReservationResponse.getCheckOut ())
                 .type (ReservationType.ROOM)
                 .itemId (roomReservationResponse.getReservationId ())
                 .price (roomReservationResponse.getPrice ())

@@ -15,8 +15,8 @@ import java.util.UUID;
 public class RoomReservationResponse {
 
     private String city;
-    private LocalDate checkin;
-    private LocalDate checkout;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private String category;
     private UUID reservationId;
     private double price;

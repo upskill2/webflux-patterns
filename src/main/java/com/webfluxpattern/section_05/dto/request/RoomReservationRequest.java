@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class RoomReservationRequest {
 
     private String city;
-    private LocalDate checkin;
-    private LocalDate checkout;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private String category;
 }
