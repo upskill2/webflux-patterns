@@ -2,6 +2,19 @@ logging:
   level:
     ROOT: DEBUG
 
+resilience4j.circuitbreaker:
+  instances:
+     review-service:
+       slidingWindowType: COUNT_BASED
+       slidingWindowSize: 4
+       minimumNumberOfCalls: 3
+       failureRateThreshold: 50
+       waitDurationInOpenState: 10s
+       permittedNumberOfCallsInHalfOpenState: 2
+       recordExceptions:
+         - org.springframework.web.reactive.function.client.WebClientResponseException
+         - java.util.concurrent.TimeoutException
+
 sec01:
   product.service: "http://localhost:6060/sec01/product"
   review.service: "http://localhost:6060/sec01/review"
@@ -35,3 +48,7 @@ sec06:
 sec07:
   product.service: "http://localhost:6060/sec07/product"
   review.service: "http://localhost:6060/sec07/review"
+
+sec08:
+  product.service: "http://localhost:6060/sec08/product"
+  review.service: "http://localhost:6060/sec08/review"
