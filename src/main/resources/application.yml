@@ -27,3 +27,7 @@ sec04:
 sec05:
   car.service: "http://localhost:6060/sec05/car/reserve"
   room.service: "http://localhost:6060/sec05/room/reserve"
+
+sec06:
+  product.service: "http://localhost:6060/sec06/product"
+  review.service: "http://localhost:6060/sec06/review"
