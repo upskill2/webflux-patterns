@@ -23,3 +23,7 @@ sec04:
   user.service: "http://localhost:6060/sec04/user"
   shipping.service: "http://localhost:6060/sec04/shipping"
   inventory.service: "http://localhost:6060/sec04/inventory"
+
+sec05:
+  car.service: "http://localhost:6060/sec05/car/reserve"
+  room.service: "http://localhost:6060/sec05/room/reserve"
