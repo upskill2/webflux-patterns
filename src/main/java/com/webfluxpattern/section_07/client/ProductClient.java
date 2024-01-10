@@ -1,6 +1,6 @@
-package com.webfluxpattern.section_06.client;
+package com.webfluxpattern.section_07.client;
 
-import com.webfluxpattern.section_06.dto.ProductResponseDto;
+import com.webfluxpattern.section_07.dto.ProductResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,7 +14,7 @@ public class ProductClient {
     private final WebClient webClient;
 
 
-    public ProductClient (@Value ("${sec06.product.service}") String baseUrl) {
+    public ProductClient (@Value ("${sec07.product.service}") String baseUrl) {
         this.webClient = WebClient.builder ()
                 .baseUrl (baseUrl)
                 .build ();
@@ -26,7 +26,6 @@ public class ProductClient {
                 .uri ("/{id}", id)
                 .retrieve ()
                 .bodyToMono (ProductResponseDto.class)
-               .timeout (Duration.ofMillis (500))
                .onErrorResume (error -> Mono.empty ());
     }
 
