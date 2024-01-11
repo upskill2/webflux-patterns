@@ -1,6 +1,6 @@
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO
 
 resilience4j:
   ratelimiter:
