@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -33,7 +32,6 @@ class FibonnachiControllerTest {
                 .build ();
     }
 
-
     @Test
     void fib () {
         StepVerifier.create (Flux.merge (fibRequest (), productRequest ()))
@@ -47,7 +45,6 @@ class FibonnachiControllerTest {
                         .bodyToMono (Long.class))
                 .doOnNext (k -> log.info ("{} -> {}", LocalDateTime.now (), k))
                 .then ();
-
     }
 
     private Mono<Void> productRequest () {
